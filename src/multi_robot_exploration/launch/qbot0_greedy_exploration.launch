@@ -1,0 +1,5 @@
+<launch>
+	<!-- run the greedy exploration as qbot0 -->
+  	<include ns="qbot0" file="$(find multi_robot_exploration)/launch/greedy_exploration.launch"/>
+
+</launch>
