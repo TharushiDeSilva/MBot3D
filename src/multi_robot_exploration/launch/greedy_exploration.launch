@@ -13,7 +13,7 @@
 	<!-- run octomap_server -->
   	<include file="$(find octomap_server)/launch/octomap_mapping.launch"/>
 	
-	<!-- run navigation goals -->
+	<!-- run navigation stack -->
 	<include file="$(find multi_robot_exploration)/launch/my_navigation.launch"/>
 
 	<!-- Run the greedy exploration algorithm -->
