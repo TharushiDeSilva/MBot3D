@@ -1,8 +1,9 @@
 <launch>
-    <!-- Run the Kobuki base -->
-    <include file="$(find kobuki_node)/launch/minimal.launch"/>
+    <group ns="robot1">
+        <!-- Run the Kobuki base -->
+        <include file="$(find kobuki_node)/launch/minimal.launch"/>
 
-    <!-- Run the Keyop controller -->
-    <include file="$(find kobuki_keyop)/launch/keyop.launch"/>
-
+        <!-- Run the Keyop controller -->
+        <include file="$(find kobuki_keyop)/launch/keyop.launch"/>
+    </group>
 </launch>
