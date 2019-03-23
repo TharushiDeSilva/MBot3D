@@ -8,4 +8,4 @@ How to install
 
 How to Run 
 1. the test node for a single robot 
-	roslaunch multi_robot_exploration namespace_debug.launch
+	>> roslaunch multi_robot_exploration namespace_debug.launch
