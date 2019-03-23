@@ -7,7 +7,7 @@
 
 		<!-- run kinect -->
 		<include file="$(find freenect_launch)/launch/freenect.launch">
-			<remap from="camera/depth/points" to="/bump" />
+			<remap from="camera/depth/points" to="bump" />
 		</include>
 
 		<!-- run octomap_server -->
