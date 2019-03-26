@@ -1,5 +1,5 @@
 <launch>
-	<group ns="qbot1">
+
 		<!-- run kobuki base -->
 		<include file="$(find kobuki_node)/launch/minimal.launch"/>
 
@@ -17,5 +17,5 @@
 
 		<!-- Run the greedy exploration algorithm -->
 		<include file="$(find explore_lite)/launch/explore.launch"/>
-	</group>
+
 </launch>
