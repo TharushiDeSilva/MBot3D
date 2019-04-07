@@ -12,7 +12,7 @@
 
   <!-- Kobuki -->
   <xacro:macro name="kobuki">
-    <link name="base_footprint"/>
+    <link name="/qbot0/base_footprint"/>
     <!--
        Base link is set at the bottom of the base mould.
        This is done to be compatible with the way base link
@@ -26,10 +26,10 @@
       -->
     <joint name="base_joint" type="fixed">
       <origin xyz="0 0 0.0102" rpy="0 0 0" />
-      <parent link="base_footprint"/>
-      <child link="base_link" />
+      <parent link="/qbot0/base_footprint"/>
+      <child link="/qbot0/base_link" />
     </joint>
-    <link name="base_link">
+    <link name="/qbot0/base_link">
       <visual>
         <geometry>
           <!-- new mesh -->
@@ -61,7 +61,7 @@
     </link>
 
     <joint name="wheel_left_joint" type="continuous">
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="wheel_left_link"/>
       <origin xyz="0.00 ${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
@@ -89,7 +89,7 @@
     </link>
 
     <joint name="wheel_right_joint" type="continuous">
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="wheel_right_link"/>
       <origin xyz="0.00 -${0.23/2} 0.0250" rpy="${-M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
@@ -117,7 +117,7 @@
     </link>
 
     <joint name="caster_front_joint" type="fixed">
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="caster_front_link"/>
       <origin xyz="0.115 0.0 0.007" rpy="${-M_PI/2} 0 0"/>
     </joint>
@@ -138,7 +138,7 @@
     </link>
 
     <joint name="caster_back_joint" type="fixed">
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="caster_back_link"/>
       <origin xyz="-0.135 0.0 0.009" rpy="${-M_PI/2} 0 0"/>
     </joint>
@@ -162,7 +162,7 @@
     <joint name="gyro_joint" type="fixed">
       <axis xyz="0 1 0"/>
       <origin xyz="0.056 0.062 0.0202" rpy="0 0 0"/>
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="gyro_link"/>
     </joint>
     <link name="gyro_link">
@@ -177,7 +177,7 @@
 
     <joint name="cliff_sensor_left_joint" type="fixed">
       <origin xyz="0.08734 0.13601 0.0214" rpy="0 ${M_PI/2} 0" />
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="cliff_sensor_left_link" />
     </joint>
     <link name="cliff_sensor_left_link">
@@ -192,7 +192,7 @@
 
     <joint name="cliff_sensor_right_joint" type="fixed">
       <origin xyz="0.085 -0.13601 0.0214" rpy="0 ${M_PI/2} 0" />
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="cliff_sensor_right_link" />
     </joint>
     <link name="cliff_sensor_right_link">
@@ -207,7 +207,7 @@
 
     <joint name="cliff_sensor_front_joint" type="fixed">
       <origin xyz="0.156 0.00 0.0214" rpy="0 ${M_PI/2} 0" />
-      <parent link="base_link"/>
+      <parent link="/qbot0/base_link"/>
       <child link="cliff_sensor_front_link" />
     </joint>
     <link name="cliff_sensor_front_link">

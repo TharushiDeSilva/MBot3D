@@ -17,6 +17,10 @@ How to Run
 2. Greedy exploration full node for a qbot0 in multi-robot system (change the name accordingly) 
     >> roslaunch multi_robot_exploration qbot0_greedy_exploration.launch 
 
+3. Greedy exploration full node for a robot in a multi-robot system - with TF_prefix changes
+    (change all the places where "qbot0" appears accordingly)
+
+    >> roslaunch multi_robot_exploration test_tf_prefix.launch
 -----------------------------------------------------------------------------------------------
 
 To Test and debug, run the nodes separately in separate terminals. 
@@ -27,3 +31,5 @@ To Test and debug, run the nodes separately in separate terminals.
 4. roslaunch octomap_server octomap_mapping.launch
 5. roslaunch multi_robot_exploration my_navigation.launch
 6. roslaunch explore_lite explore.launch 
+
+

@@ -133,7 +133,7 @@ class LaunchConfig(QObject):
     @property
     def LaunchName(self):
         '''
-        Returns the name of the launch file with extension, e.g. 'test.launch'
+        Returns the name of the launch file with extension, e.g. 'test_with_tf.launch'
         @rtype: C{str}
         '''
         return os.path.basename(self.__launchFile)
