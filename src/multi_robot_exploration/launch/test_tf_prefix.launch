@@ -13,6 +13,10 @@
         <node pkg="tf" type="static_transform_publisher" name="camera_to_base" args="0 0 0.1 0 0.0 0 $(arg tf_prefix)/base_footprint $(arg tf_prefix)/camera_link 100"/>
         <node pkg="tf" type="static_transform_publisher" name="robot_state_publisher" args="0 0 0 0 0.0 0 $(arg tf_prefix)/base_footprint $(arg tf_prefix)/base_link 100"/>
         <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_map" args="0 0 0 0 0 0 $(arg tf_prefix)/map $(arg tf_prefix)/odom 100"/>
+        <!-- declaring the world coordinate frame -->
+		<node pkg="tf" type="static_transform_publisher" name="world_to_robot" args="0 0 0 0 0.0 0 /world $(arg tf_prefix)/map 100" />
+
+
         <!-- run kinect -->
         <include file="$(find freenect_launch)/launch/freenect_tf_prefix.launch">
             <arg name="tf_prefix" default="qbot0"/>
@@ -26,14 +30,22 @@
         </include>
 
         <!-- Move base -->
-		<include file="$(find my_robot_navigation)/launch/move_base_tf_prefix.launch.xml">
+		<!--include file="$(find my_robot_navigation)/launch/move_base_tf_prefix.launch.xml">
             <arg name="tf_prefix" default="qbot0"/>
-        </include>
+        </include-->
 
 		<!-- Run the greedy exploration algorithm -->
-		<include file="$(find explore_lite)/launch/explore_tf_prefix.launch">
+		<!--include file="$(find explore_lite)/launch/explore_tf_prefix.launch">
             <arg name="tf_prefix" default="qbot0"/>
-        </include>
+        </include-->
+
+        <!-- parameters for map merging /Relative to world coordinate frame -->
+        <group ns="map_merge">
+			<param name="init_pose_x" value="0.0"/>
+			<param name="init_pose_y" value="0.0"/>
+			<param name="init_pose_z" value="0.0"/>
+			<param name="init_pose_yaw" value="0.0"/>
+		</group>
 
     </group>
 </launch>
