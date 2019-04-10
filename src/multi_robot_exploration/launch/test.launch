@@ -19,10 +19,10 @@
 		<include file="$(find octomap_server)/launch/octomap_mapping.launch"/>
 
 		<!-- Move base -->
-		<!--include file="$(find my_robot_navigation)/launch/move_base.launch.xml"/-->
+		<include file="$(find my_robot_navigation)/launch/move_base.launch.xml"/>
 
 		<!-- Run the greedy exploration algorithm -->
-		<!--include file="$(find explore_lite)/launch/explore.launch"/-->
+		<include file="$(find explore_lite)/launch/explore.launch"/>
 
 		<group ns="map_merge">
 			<param name="init_pose_x" value="0.0"/>
