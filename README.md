@@ -17,13 +17,26 @@ How to Run
 2. Greedy exploration full node for a qbot0 in multi-robot system (change the name accordingly) 
     >> roslaunch multi_robot_exploration qbot0_greedy_exploration.launch 
 
+3. Greedy exploration full node for a robot in a multi-robot system - with TF_prefix changes
+    (change all the places where "qbot0" appears accordingly)
+
+    >> roslaunch multi_robot_exploration test_tf_prefix.launch
 -----------------------------------------------------------------------------------------------
 
 To Test and debug, run the nodes separately in separate terminals. 
 
 1. roslaunch kobuki_node minimal.launch 
-2. roslaunch multi_robot_exploration tf_pub.launch 
+2. roslaunch multi_robot_exploration tf_pub_test.launch 
 3. roslaunch freenect_launch freenect.launch 
 4. roslaunch octomap_server octomap_mapping.launch
 5. roslaunch multi_robot_exploration my_navigation.launch
 6. roslaunch explore_lite explore.launch 
+
+
+Run Octomap with ROS-melodic (No kobuki involved)
+1. source devel_isolated/setup.bash
+2. roslaunch multi_robot_exploration tf_pub.launch
+3. roslaunch openni_launch openni.launch
+4. roslaunch octomap_server octomap_mapping.launch
+5. rosrun openni_camera openni_node
+6. rosrun rviz rviz -----------> fixed_frame = odom
