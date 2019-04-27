@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wno-error  -O3 -funroll-loops -DNDEBUG  -rdynamic CMakeFiles/test_pruning.dir/test_pruning.cpp.o  -o ../../../bin/test_pruning  -L/home/tharushi/MBot3D/src/octomap-devel/octomap/lib -Wl,-rpath,/home/tharushi/MBot3D/src/octomap-devel/octomap/lib ../../../lib/liboctomap.so.1.9.0 ../../../lib/liboctomath.so.1.9.0 

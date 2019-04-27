@@ -1,0 +1,27 @@
+Subscribe to the Kobui's pose data
+
+>> roslaunch kobuki_node minimal.launch --screen
+>> ./odom_subsriber.py
+
+Provide a navigation goal - For single use only
+ 1. launch the navigation stack program
+ 2. instead of rviz launch :
+    ./simple_navigation_goals.py
+
+
+Provide a sequence of nav goals:
+1. launch navigation stack
+2. roslaunch simple_nav_goals movebase_seq.launch
+
+
+Provide a sequence of nav goals through code (Not launch file)
+
+1. launch navigation stack 
+2. ./navigation_patrol
+
+
+or
+1. source and run navigation stack or
+roscore,  rosrun turtlebot_stage turtlebot_in_stage.launch
+
+2. ./navigation_patrol.py
