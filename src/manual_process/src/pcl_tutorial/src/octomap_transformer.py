@@ -9,21 +9,21 @@ from std_msgs.msg import Header
 pub = rospy.Publisher("octomap_centers_transformed", PointCloud2, queue_size=2)
 
 def transform_points(points_msg):
-    points = []
+    points_translated = []
 
     for p in point_cloud2.read_points(points_msg, skip_nans=True):
         x_translated = round(p[0],3) + 2.000
         y_translated = round(p[1],3)
         z_translated = round(p[2],3)
         pt = [x_translated, y_translated, z_translated]
-        points.append(pt)
+        points_translated.append(pt)
     
     fields = [PointField('x', 0, PointField.FLOAT32, 1), PointField('y', 4, PointField.FLOAT32, 1),PointField('z', 8, PointField.FLOAT32, 1)]
 
     header = Header()
     header.stamp = rospy.Time.now()
     header.frame_id = "map"
-    pc2 = point_cloud2.create_cloud(header, fields, points)
+    pc2 = point_cloud2.create_cloud(header, fields, points_translated)
     pub.publish(pc2)
 
 if __name__ == "__main__":

@@ -9,30 +9,36 @@ from visualization_msgs.msg import Marker, MarkerArray
 pub = rospy.Publisher("merged_occupied_cells_array", MarkerArray, queue_size=2)
 
 def visulize_points(points_msg):
-    points_translated = []
+    markerArray = MarkerArray()
     i=0
-    print "points count: ",points_msg.width
     for p in point_cloud2.read_points(points_msg, skip_nans=True):
-        x_translated = round(p[0],3) + 2.000
-        y_translated = round(p[1],3)
-        z_translated = round(p[2],3)
-        pt = [x_translated, y_translated, z_translated]
-        points_translated.append(pt)
-        i+=1
-    fields = [
-            PointField('x', 0, PointField.FLOAT32, 1),
-            PointField('y', 4, PointField.FLOAT32, 1),
-            PointField('z', 8, PointField.FLOAT32, 1) 
-        ]
+        x_position = p[0]   #extract position data from the point cloud
+        y_position = p[1]
+        z_position = p[2]
 
-    header = Header()
-    header.stamp = rospy.Time.now()
-    header.frame_id = "map"
-    pc2 = point_cloud2.create_cloud(header, fields, points_translated)
-    pub.publish(pc2)
+        marker = Marker()
+        marker.header.frame_id = "world"
+        marker.type = marker.CUBE
+        marker.action = marker.ADD
+        marker.scale.x = 0.03
+        marker.scale.y = 0.03
+        marker.scale.z = 0.03
+        marker.color.a = 1.0
+        marker.color.r = 1.0
+        marker.color.g = 1.0
+        marker.color.b = 1.0
+        marker.pose.orientation.w = 1.0
+        marker.pose.position.x = x_position
+        marker.pose.position.y = y_position
+        marker.pose.position.z = z_position
+        marker.id = i+1
+        markerArray.markers.append(marker)
+        i+=1
+    
+    pub.publish(markerArray)
 
 if __name__ == "__main__":
     rospy.init_node('visualize_merged_octomap', anonymous=True)
-    rospy.Subscriber('centers_transformed', PointCloud2, transform_points)
+    rospy.Subscriber('octomap_centers_transformed', PointCloud2, visulize_points)
     rospy.sleep(1.0)
     rospy.spin()
