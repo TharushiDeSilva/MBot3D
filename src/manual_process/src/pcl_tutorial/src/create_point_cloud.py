@@ -9,31 +9,30 @@ from std_msgs.msg import Header
 rospy.init_node("create_cloud_xyzrgb")
 pub = rospy.Publisher("point_cloud_2", PointCloud2, queue_size=2)
 
+position = [0.5, 0.5, 0.5, 1.0, 1.0, 1.0, 1.5, 1.5, 1.5, 2.0, 2.0, 2.0]
+#rgb_array = [255,100,100,50,150,100,200,25,200,255,100,255]
 points = []
-lim = 8
+lim = 4
 
 for i in range(lim):
-    for j in range(lim):
-        for k in range(lim):
-            x = float(i)/lim
-            y = float(j)/lim
-            z = float(k)/lim
-            pt = [x, y, z, 0]
-            r = int(x * 255.0)
-            g = int(y * 255.0)
-            b = int(z * 255.0)
-            a = 255
-            print r, g, b, a
-            rgb = struct.unpack('I', struct.pack('BBBB', b, g, r, a))[0]
-            print hex(rgb)
-            pt[3] = rgb
+            x = float(position[i*3+0])
+            y = float(position[i*3+1])
+            z = float(position[i*3+2])
+           # r = int(rgb_array[i*3+0])
+           # g = int(rgb_array[i*3+1])
+           # b = int(rgb_array[i*3+2])
+            #a = 255
+    
+           # rgb = struct.unpack('I', struct.pack('BBBB', b, g, r, a))[0]
+            #print hex(rgb)
+            pt = [x,y,z] #,rgb]
             points.append(pt)
 
 fields = [
             PointField('x', 0, PointField.FLOAT32, 1),
             PointField('y', 4, PointField.FLOAT32, 1),
-            PointField('z', 8, PointField.FLOAT32, 1),
-            PointField('rgb', 12, PointField.FLOAT32, 1)
+            PointField('z', 8, PointField.FLOAT32, 1) #,
+            #PointField('rgb', 12, PointField.FLOAT32, 1)
         ]
 
 header = Header()

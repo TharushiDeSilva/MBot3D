@@ -2,12 +2,12 @@
 
 import rospy
 #import pcl
-from sensor_msgs.msg import PointCloud2
+from sensor_msgs.msg import PointCloud2, PointField
 #import sensor_msgs.point_cloud2 as pc2 
 #import ros_numpy
 
 def raw_points_cb(msg):
-    print msg.fields
+    print msg
     print "\n"
 
 
