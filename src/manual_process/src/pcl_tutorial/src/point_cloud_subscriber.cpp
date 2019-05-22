@@ -4,7 +4,7 @@
 void point_cloud_callback(const sensor_msgs::PointCloud2::ConstPtr& msg){
     ROS_INFO("Height is :[%d]", msg->height); 
     ROS_INFO("Width is: [%u]", msg->width);
-}
+    
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "point_cloud_sub"); 

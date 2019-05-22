@@ -20,7 +20,7 @@ def visulize_points(points_msg):
         marker.header.frame_id = "world"
         marker.type = marker.CUBE
         marker.action = marker.ADD
-        marker.scale.x = 0.03
+        marker.scale.x = 0.03           # the resolution of the octomap makes the visualization complete
         marker.scale.y = 0.03
         marker.scale.z = 0.03
         marker.color.a = 1.0
